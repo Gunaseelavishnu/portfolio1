@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gunaseela Vishnu – Cybersecurity & Ethical Hacking Learner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        :root {
+            --main-bg: #ffffff;
+            --panel-bg: #f5fafd;
+            --accent: #2875ec;
+            --accent2: #7dc1f7;
+            --text-dark: #244066;
+            --text-light: #5a7ebd;
+            --bar-light: #e2effc;
+        }
+        body { background: var(--main-bg); color: var(--text-dark); font-family: 'Montserrat', Arial, sans-serif; margin: 0; }
+        .container { max-width: 900px; margin: 45px auto 0 auto; background: var(--panel-bg); border-radius: 17px; padding: 38px 32px 30px 32px; box-shadow: 0 8px 32px #dcefff;}
+        h1 { color: var(--accent); margin-bottom: .15em; letter-spacing: 2px;}
+        .subtitle { color: var(--text-light); font-size: 1.13em; margin-bottom: 2em;}
+        .section { margin-bottom: 48px; opacity: 0; transform: translateY(30px); transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1); }
+        .section.visible { opacity: 1; transform: none; }
+        h2 { color: var(--accent2); font-size: 1.35em; letter-spacing: 1px; text-align: center; margin-bottom: 22px; margin-top: 0;}
+        /* Hero Section */
+        .hero-main {
+            background: #fafcff;
+            min-height: 400px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 3px solid #7dc1f7;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+        .hero-content {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 46px 5vw 30px 7vw;
+        }
+        .hero-text {
+            flex: 1 1 520px;
+        }
+        .hero-minimal {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 2em;
+            font-weight: 900;
+            color: #222;
+            letter-spacing: -1px;
+            margin-bottom: 28px;
+        }
+        .moving-text {
+            display: inline-block;
+            color: #2875ec;
+            font-weight: 900;
+            font-size: 1.12em;
+            padding-left: 6px;
+            border-right: 2px solid #2875ec;
+            animation: blink 1.1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { border-color: transparent;}
+        }
+        .hero-icons {
+            display: flex; gap: 16px; margin-top:22px;
+        }
+        .hero-icons a {
+            background: #efefef;
+            border: 2.5px solid #2875ec;
+            color: #2875ec;
+            padding: 8px 16px 8px 13px;
+            border-radius: 11px;
+            font-weight: 700;
+            text-decoration: none;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.08em;
+            display: flex; align-items: center; gap: 9px;
+            transition: background .2s, color .2s;
+        }
+        .hero-icons a:hover {
+            background: #2875ec;
+            color: #fff;
+        }
+        .hero-icons svg {
+            width: 27px; height: 27px;
+        }
+        .hero-imagebox {
+            flex: 0 0 215px;
+            display: flex; align-items: center; justify-content: center; min-width:170px; margin-left:32px;
+        }
+        .hero-imagebox img {
+            width: 180px; height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #2875ec;
+            box-shadow: 0 4px 24px #c7eaff60;
+            background: #fff;
+        }
+        @media (max-width:900px){
+            .hero-content{flex-direction:column;align-items:flex-start;gap:36px; padding: 32px 3vw;}
+            .hero-imagebox{align-items:center;justify-content:center;margin-left:0;margin-top:30px;}
+        }
+        /* Skills/Tools styling */
+        .skill-section { background: #fff; color: var(--text-dark); padding: 35px 20px 27px 20px; border-radius: 18px; box-shadow: 0 2px 13px #e6efff;}
+        .skill-list { display: flex; flex-wrap: wrap; column-gap: 48px; row-gap: 22px; justify-content: space-between;}
+        .skill { flex: 1 1 380px; min-width: 270px; }
+        .skill-name { font-weight: 700; font-size: 1.09em; }
+        .skill-bar-wrapper { display: flex; align-items: center; }
+        .skill-bar-bg { flex: 1; background: var(--bar-light); border-radius: 8px; height: 16px; margin-top: 9px; margin-bottom: 6px; width: 100%; position: relative;}
+        .skill-bar-fill { background: var(--accent2); height: 100%; border-radius: 8px 0 0 8px; position: absolute; left: 0; top: 0; }
+        .skill-percent { font-weight: 800; margin-left: 14px; margin-top: 8px; color: var(--accent); min-width: 40px; text-align: right;}
+        .skill-labels { margin-top: 2px; margin-bottom: 7px; }
+        .skill-level, .skill-years { background: var(--accent); color: white; border-radius: 7px; padding: 3.5px 13px; font-weight: 600; font-size: .93em; display: inline-block; margin-right: 9px; margin-top: 5px;}
+        /* Projects & contact styling */
+        .project-list .project { background: #f9fcff; border-radius: 12px; padding: 19px 18px; margin-bottom: 20px; box-shadow: 0 2px 10px #e5f2ff; display: flex; align-items: center; gap: 20px; cursor:pointer;}
+        .project img { width: 100px; height: 70px; object-fit: cover; border-radius: 9px; }
+        .project-desc { flex: 1; }
+        .project-title { color: var(--accent); margin-bottom: .5em; font-family: 'Montserrat', Arial, sans-serif;}
+        .project-description { font-family: 'Times New Roman', Times, serif !important; font-size: 1em; color: var(--text-dark);}
+        .badges { display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: center;}
+        .badge { background: var(--accent2); color: #244066; border-radius: 11px; padding: 8px 16px; font-weight: 600; font-size: 1em; margin: 2px 4px; cursor: pointer; transition: background 0.23s;}
+        .badge:hover {background: #2875ec; color: #fff;}
+        @media (max-width:700px){
+            .container{padding: 10px 2vw;}
+            .project img{width:65px; height:48px;}
+            .skill-list{flex-direction:column;gap:23px;}
+        }
+        /* MODAL PROJECT */
+        .modal {
+            position: fixed; z-index: 1000; left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(44,56,90,0.18); display: flex; align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: #fff; border-radius: 12px; max-width: 375px; width: 94vw; padding: 32px 23px;
+            box-shadow: 0 4px 54px #2875ec36; position: relative; text-align: center;
+        }
+        .close {
+            position: absolute; top: 13px; right: 19px; color: #244066; font-size: 2em; font-weight: 900; cursor: pointer;
+        }
+        .modal-btn {
+            margin: 0 7px 0 7px; background: #2875ec; color: #fff; font-weight: 700; font-size: 1.08em; border:none; border-radius: 8px; padding: 7px 21px; cursor:pointer;text-decoration:none;transition:.22s;
+            display:inline-block; min-width: 74px;
+        }
+        .modal-btn:hover {background: #104080;}
+
+        .modal-buttons {margin: 17px 0 2px 0;}
+    </style>
+</head>
+<body>
+<!-- HERO SECTION -->
+<div class="hero-main" id="about">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-minimal">
+        Hi, I'm <span>Gunaseela Vishnu</span>,<br>
+        Guarding Innovation in the Digital Age<br>
+        <span class="moving-text" id="movingText"></span>
+      </div>
+      <div class="hero-icons">
+        <a href="https://www.linkedin.com/in/gunaseela-vishnu-94169731b" target="_blank" title="LinkedIn">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 3h-15A1.5 1.5 0 003 4.5v15A1.5 1.5 0 004.5 21h15A1.5 1.5 0 0021 19.5v-15A1.5 1.5 0 0019.5 3zM8.5 17H6V9h2.5v8zm-1.25-9.02a1.46 1.46 0 110-2.92 1.46 1.46 0 010 2.92zm10.25 9.02h-2.5v-4c0-1.14-.54-1.73-1.65-1.73-.89 0-1.36.6-1.36 1.69v4.04h-2.5V9h2.41v1.14c.35-.64 1.04-1.28 2.13-1.28 1.74 0 2.47 1.05 2.47 3.04V17z"></path></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:gunaseelavishnu@gmail.com" title="Mail">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M3 6a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6zm16 0H5v.511l7 4.397 7-4.397V6zm0 2.239l-6.378 4a2 2 0 01-2.129 0L5 8.239V18h14V8.239z"></path></svg>
+          Mail
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <h1>Gunaseela Vishnu</h1>
+    <div class="subtitle">
+        B.Sc. Information Technology | Web Analysis, Bug Bounty & Ethical Hacking Explorer<br>
+        Chennai, Tamil Nadu, India
+    </div>
+
+    <!-- About -->
+    <div class="section" id="experiences">
+        <h2>About Me</h2>
+        <p>
+            • Passionate about building and breaking digital boundaries, with curiosity for security challenges.<br>
+            • Continuously hunting and reporting on cybersecurity vulnerabilities across platforms.<br>
+            • Community-driven: Active in CTFs, sharing knowledge, and learning from global experts.<br>
+            • Adept with Linux and open-source tools, always experimenting with new exploits responsibly.<br>
+            • Quick to adapt, eager to collaborate, and always looking for new puzzles in the cybersecurity landscape.
+        </p>
+    </div>
+
+    <!-- Skills & Tools -->
+    <div class="section skill-section" id="skills">
+      <h2>Skills & Tools</h2>
+      <div class="skill-list">
+        <div class="skill">
+          <div class="skill-name">Python</div>
+          <div class="skill-labels"><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 80%"></div>
+            </div><span class="skill-percent">80%</span>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Java</div>
+          <div class="skill-labels"><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 70%"></div>
+            </div><span class="skill-percent">70%</span>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Linux Tools</div>
+          <div class="skill-labels"><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 80%"></div>
+            </div><span class="skill-percent">80%</span>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Nmap</div>
+          <div class="skill-labels"><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 80%"></div>
+            </div><span class="skill-percent">80%</span>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Metasploit</div>
+          <div class="skill-labels"><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 75%"></div>
+            </div><span class="skill-percent">75%</span>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Burp Suite</div>
+          <div class="skill-labels"><span class="skill-level">Beginner</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 55%"></div>
+            </div><span class="skill-percent">55%</span>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Web Analysis</div>
+          <div class="skill-labels"><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 75%"></div>
+            </div><span class="skill-percent">75%</span>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">HTML</div>
+          <div class="skill-labels"><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 85%"></div>
+            </div><span class="skill-percent">85%</span>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">SQL</div>
+          <div class="skill-labels"><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 55%"></div>
+            </div><span class="skill-percent">55%</span>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">GitHub</div>
+          <div class="skill-labels"><span class="skill-level">Intermediate</span></div>
+          <div class="skill-bar-wrapper"><div class="skill-bar-bg">
+              <div class="skill-bar-fill" style="width: 80%"></div>
+            </div><span class="skill-percent">80%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="section" id="certifications">
+        <h2>Certifications</h2>
+        <div class="badges">
+            <span class="badge" onclick="window.open('tcsion-certificate.pdf','_blank')">TCS iON: InfoSec Practitioner</span>
+            <span class="badge" onclick="window.open('tcsion-certificate.pdf','_blank')">TCS iON: Cyber Security</span>
+            <span class="badge" onclick="window.open('Coursera-certificate-google.pdf','_blank')">Google: Linux & SQL</span>
+            <span class="badge">NPTEL: Social Network</span>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="section" id="projects">
+      <h2>Project Highlights</h2>
+      <div class="project-list">
+
+        <!-- Project 1 -->
+        <div class="project" onclick="openProjectModal('scanner')">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" alt="Network Scanner">
+          <div class="project-desc">
+            <div class="project-title">Simple Network Scanner</div>
+            <div class="project-description">Builds a map of all devices on a local network, identifying IP and MAC addresses using Python, Nmap, and Scapy.<br>Streamlines network audits and lays the foundation for further vulnerability analysis tools.</div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project" onclick="openProjectModal('vulnscan')">
+          <img src="https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?auto=format&fit=crop&w=400&q=80" alt="VulnScan Pro">
+          <div class="project-desc">
+            <div class="project-title">VulnScan Pro</div>
+            <div class="project-description">Automated Java-based tool using Nmap and Metasploit for rapid assessment and detection of network vulnerabilities.<br>Identifies risks and strengthens organizational security posture.</div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project" onclick="openProjectModal('face')">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Face Recognition">
+          <div class="project-desc">
+            <div class="project-title">Face Recognition System (Intern)</div>
+            <div class="project-description">Developed a face recognition system using Python for identifying individuals in video streams.<br>Enhanced automation and accuracy for security-focused solutions as a Machine Learning Intern.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+</div>
+
+<!-- Project Modal -->
+<div id="projectModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeProjectModal()">&times;</span>
+    <h3 id="modalTitle"></h3>
+    <div class="modal-buttons">
+      <a id="demoLink" class="modal-btn" target="_blank" style="display:none;">Demo</a>
+      <a id="codeLink" class="modal-btn" target="_blank" style="display:none;">Code</a>
+      <button class="modal-btn" onclick="showInfo()">Info</button>
+    </div>
+    <div id="modalInfo" style="margin-top:18px;font-size:1.1em;color:#244066;"></div>
+  </div>
+</div>
+
+<!-- CONTACT & FOOTER -->
+<div style="background:#f5fafd; padding:70px 0 60px 0; border-top:3px solid #7dc1f7; text-align:center;" id="contact">
+    <div style="color:#2875ec; font-weight:800; text-transform:uppercase; letter-spacing:1px; font-size:1.18em; margin-bottom:14px;">Contact</div>
+    <div style="font-family:'Montserrat',Arial,sans-serif; font-size:1.37em; font-weight:800; color:#244066; margin-bottom:38px;">
+        Let's connect and build something great together!
+    </div>
+    <div style="display:flex;gap:40px;justify-content:center;">
+        <a href="https://www.linkedin.com/in/gunaseela-vishnu-94169731b" target="_blank" style="background:#2875ec;display:flex;align-items:center;gap:12px;padding:12px 32px 12px 18px; border-radius:18px;color:#fff;font-weight:700;font-size:1.11em;text-decoration:none;box-shadow:0 2px 14px #ddeafd;">
+            <svg width="32" height="32" fill="#fff" viewBox="0 0 24 24"><path d="M19.5 3h-15A1.5 1.5 0 003 4.5v15A1.5 1.5 0 004.5 21h15A1.5 1.5 0 0021 19.5v-15A1.5 1.5 0 0019.5 3zM8.5 17H6V9h2.5v8zm-1.25-9.02a1.46 1.46 0 110-2.92 1.46 1.46 0 010 2.92zm10.25 9.02h-2.5v-4c0-1.14-.54-1.73-1.65-1.73-.89 0-1.36.6-1.36 1.69v4.04h-2.5V9h2.41v1.14c.35-.64 1.04-1.28 2.13-1.28 1.74 0 2.47 1.05 2.47 3.04V17z"></path></svg>
+            LinkedIn
+        </a>
+        <a href="mailto:gunaseelavishnu@gmail.com" style="background:#2875ec;display:flex;align-items:center;gap:12px;padding:12px 40px 12px 18px; border-radius:18px;color:#fff;font-weight:700;font-size:1.11em;text-decoration:none;box-shadow:0 2px 14px #ddeafd;">
+            <svg width="32" height="32" fill="#fff" viewBox="0 0 24 24"><path d="M3 6a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6zm16 0H5v.511l7 4.397 7-4.397V6zm0 2.239l-6.378 4a2 2 0 01-2.129 0L5 8.239V18h14V8.239z"></path></svg>
+            Mail
+        </a>
+    </div>
+</div>
+
+<div style="background:#30333a; color:#fff; padding:48px 0 20px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;max-width:1100px;margin:0 auto 0 auto;flex-wrap:wrap;">
+        <div style="flex:1 1 270px; min-width:200px; margin-bottom:30px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <img src="https://cdn-icons-png.flaticon.com/512/270/270798.png" style="width:36px;height:36px;border-radius:7px;background:#e4f2ff;padding:5px 2px 2px 2px;">
+                <span style="font-size:1.44em; font-weight:900; color:#7dc1f7; letter-spacing:1px;">Gunaseela Vishnu</span>
+            </div>
+            <div style="margin-top:22px;">
+                <a href="#experiences" style="color:#b6cde7;margin-right:14px;text-decoration:none;">Experiences</a>
+                <a href="#certifications" style="color:#b6cde7;margin-right:14px;text-decoration:none;">Certifications</a>
+                <a href="#projects" style="color:#b6cde7;text-decoration:none;">Projects</a>
+            </div>
+        </div>
+        <div style="flex:1 1 160px;min-width:120px;margin-bottom:30px;">
+            <div style="font-weight:700;color:#fff;margin-bottom:12px;">Menu</div>
+            <div><a href="#about" style="color:#b6cde7; text-decoration:none;">About</a></div>
+            <div><a href="#skills" style="color:#b6cde7; text-decoration:none;">Skills</a></div>
+            <div><a href="#certifications" style="color:#b6cde7; text-decoration:none;">Certifications</a></div>
+            <div><a href="#projects" style="color:#b6cde7; text-decoration:none;">Projects</a></div>
+            <div><a href="#contact" style="color:#b6cde7; text-decoration:none;">Contact</a></div>
+        </div>
+    </div>
+    <div style="text-align:center;color:#b6cde7;margin-top:38px;font-size:.97em;">
+        &copy; 2025 Gunaseela Vishnu. All Rights Reserved
+    </div>
+</div>
+<script>
+    // Animated moving text in Hero section
+    const movingWords = ["Web Analysis", "Bug Bounty Explorer", "Ethical Hacking Learner", "Cybersecurity Passionate"];
+    let idx = 0, movingText = document.getElementById("movingText");
+    function showMovingText() {
+        movingText.textContent = movingWords[idx];
+        idx = (idx + 1) % movingWords.length;
+    }
+    showMovingText();
+    setInterval(showMovingText, 1700);
+
+    // Fade-in animation for sections
+    const sections = document.querySelectorAll('.section');
+    function checkSections() {
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if(rect.top < window.innerHeight - 50) {
+                section.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', checkSections);
+    window.addEventListener('DOMContentLoaded', checkSections);
+
+    // Project Modal logic
+    const projectData = {
+      scanner: {
+        title: "Simple Network Scanner",
+        info: "Builds a map of all devices on a local network, identifying IP and MAC addresses using Python, Nmap, and Scapy. Streamlines network audits and lays the foundation for further vulnerability analysis tools.",
+        demo: "https://your-demo-link.com", // replace with your actual demo link
+        code: "https://github.com/yourusername/simple-network-scanner" // replace with your actual code link
+      },
+      vulnscan: {
+        title: "VulnScan Pro",
+        info: "Automated Java-based tool using Nmap and Metasploit for rapid assessment and detection of network vulnerabilities. Identifies risks and strengthens organizational security posture.",
+        demo: "https://your-demo-link.com", // replace with your actual demo link
+        code: "https://github.com/yourusername/vulnscan-pro" // replace with your actual code link
+      },
+      face: {
+        title: "Face Recognition System (Intern)",
+        info: "Developed a face recognition system using Python for identifying individuals in video streams. Enhanced automation and accuracy for security-focused solutions as a Machine Learning Intern.",
+        demo: "https://your-demo-link.com", // replace with your actual demo link
+        code: "https://github.com/yourusername/face-recognition-system" // replace with your actual code link
+      }
+    };
+
+    let currentProject = null;
+
+    function openProjectModal(key) {
+      currentProject = key;
+      document.getElementById("projectModal").style.display = "flex";
+      document.getElementById("modalTitle").textContent = projectData[key].title;
+
+      // Demo button
+      if(projectData[key].demo && projectData[key].demo !== "#") {
+        document.getElementById("demoLink").style.display = "";
+        document.getElementById("demoLink").href = projectData[key].demo;
+      } else {
+        document.getElementById("demoLink").style.display = "none";
+      }
+      // Code button
+      if(projectData[key].code && projectData[key].code !== "#") {
+        document.getElementById("codeLink").style.display = "";
+        document.getElementById("codeLink").href = projectData[key].code;
+      } else {
+        document.getElementById("codeLink").style.display = "none";
+      }
+      // Info
+      document.getElementById("modalInfo").style.display = "none";
+      document.getElementById("modalInfo").textContent = "";
+    }
+
+    function closeProjectModal() {
+      document.getElementById("projectModal").style.display = "none";
+      currentProject = null;
+    }
+
+    function showInfo() {
+      if(currentProject) {
+        document.getElementById("modalInfo").textContent = projectData[currentProject].info;
+        document.getElementById("modalInfo").style.display = "block";
+      }
+    }
+
+    // Close modal when clicking outside content
+    document.addEventListener("mousedown", function(e) {
+      const modal = document.getElementById("projectModal");
+      if(modal && modal.style.display==="flex" && !modal.querySelector('.modal-content').contains(e.target)) {
+        closeProjectModal();
+      }
+    });
+</script>
+</body>
+</html>

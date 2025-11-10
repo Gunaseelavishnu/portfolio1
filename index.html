@@ -23,7 +23,6 @@
         .section { margin-bottom: 48px; opacity: 0; transform: translateY(30px); transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1); }
         .section.visible { opacity: 1; transform: none; }
         h2 { color: var(--accent2); font-size: 1.35em; letter-spacing: 1px; text-align: center; margin-bottom: 22px; margin-top: 0;}
-        /* Hero Section */
         .hero-main {
             background: #fafcff;
             min-height: 400px;
@@ -105,7 +104,6 @@
             .hero-content{flex-direction:column;align-items:flex-start;gap:36px; padding: 32px 3vw;}
             .hero-imagebox{align-items:center;justify-content:center;margin-left:0;margin-top:30px;}
         }
-        /* Skills/Tools styling */
         .skill-section { background: #fff; color: var(--text-dark); padding: 35px 20px 27px 20px; border-radius: 18px; box-shadow: 0 2px 13px #e6efff;}
         .skill-list { display: flex; flex-wrap: wrap; column-gap: 48px; row-gap: 22px; justify-content: space-between;}
         .skill { flex: 1 1 380px; min-width: 270px; }
@@ -116,7 +114,6 @@
         .skill-percent { font-weight: 800; margin-left: 14px; margin-top: 8px; color: var(--accent); min-width: 40px; text-align: right;}
         .skill-labels { margin-top: 2px; margin-bottom: 7px; }
         .skill-level, .skill-years { background: var(--accent); color: white; border-radius: 7px; padding: 3.5px 13px; font-weight: 600; font-size: .93em; display: inline-block; margin-right: 9px; margin-top: 5px;}
-        /* Projects & contact styling */
         .project-list .project { background: #f9fcff; border-radius: 12px; padding: 19px 18px; margin-bottom: 20px; box-shadow: 0 2px 10px #e5f2ff; display: flex; align-items: center; gap: 20px; cursor:pointer;}
         .project img { width: 100px; height: 70px; object-fit: cover; border-radius: 9px; }
         .project-desc { flex: 1; }
@@ -130,7 +127,6 @@
             .project img{width:65px; height:48px;}
             .skill-list{flex-direction:column;gap:23px;}
         }
-        /* MODAL PROJECT */
         .modal {
             position: fixed; z-index: 1000; left: 0; top: 0; width: 100vw; height: 100vh;
             background: rgba(44,56,90,0.18); display: flex; align-items: center; justify-content: center;
@@ -147,7 +143,6 @@
             display:inline-block; min-width: 74px;
         }
         .modal-btn:hover {background: #104080;}
-
         .modal-buttons {margin: 17px 0 2px 0;}
     </style>
 </head>
@@ -297,7 +292,6 @@
       <h2>Project Highlights</h2>
       <div class="project-list">
 
-        <!-- Project 1 -->
         <div class="project" onclick="openProjectModal('scanner')">
           <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" alt="Network Scanner">
           <div class="project-desc">
@@ -306,7 +300,6 @@
           </div>
         </div>
 
-        <!-- Project 2 -->
         <div class="project" onclick="openProjectModal('vulnscan')">
           <img src="https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?auto=format&fit=crop&w=400&q=80" alt="VulnScan Pro">
           <div class="project-desc">
@@ -315,7 +308,6 @@
           </div>
         </div>
 
-        <!-- Project 3 -->
         <div class="project" onclick="openProjectModal('face')">
           <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Face Recognition">
           <div class="project-desc">
@@ -335,7 +327,6 @@
     <span class="close" onclick="closeProjectModal()">&times;</span>
     <h3 id="modalTitle"></h3>
     <div class="modal-buttons">
-      <a id="demoLink" class="modal-btn" target="_blank" style="display:none;">Demo</a>
       <a id="codeLink" class="modal-btn" target="_blank" style="display:none;">Code</a>
       <button class="modal-btn" onclick="showInfo()">Info</button>
     </div>
@@ -343,7 +334,6 @@
   </div>
 </div>
 
-<!-- CONTACT & FOOTER -->
 <div style="background:#f5fafd; padding:70px 0 60px 0; border-top:3px solid #7dc1f7; text-align:center;" id="contact">
     <div style="color:#2875ec; font-weight:800; text-transform:uppercase; letter-spacing:1px; font-size:1.18em; margin-bottom:14px;">Contact</div>
     <div style="font-family:'Montserrat',Arial,sans-serif; font-size:1.37em; font-weight:800; color:#244066; margin-bottom:38px;">
@@ -416,20 +406,17 @@
       scanner: {
         title: "Simple Network Scanner",
         info: "Builds a map of all devices on a local network, identifying IP and MAC addresses using Python, Nmap, and Scapy. Streamlines network audits and lays the foundation for further vulnerability analysis tools.",
-        demo: "https://your-demo-link.com", // replace with your actual demo link
-        code: "https://github.com/yourusername/simple-network-scanner" // replace with your actual code link
+        code: "https://github.com/Gunaseelavishnu/simple-net-scanner"
       },
       vulnscan: {
         title: "VulnScan Pro",
         info: "Automated Java-based tool using Nmap and Metasploit for rapid assessment and detection of network vulnerabilities. Identifies risks and strengthens organizational security posture.",
-        demo: "https://your-demo-link.com", // replace with your actual demo link
-        code: "https://github.com/yourusername/vulnscan-pro" // replace with your actual code link
+        code: "https://github.com/Gunaseelavishnu/vuln-scan-pro/blob/main/rapidscan.py"
       },
       face: {
         title: "Face Recognition System (Intern)",
         info: "Developed a face recognition system using Python for identifying individuals in video streams. Enhanced automation and accuracy for security-focused solutions as a Machine Learning Intern.",
-        demo: "https://your-demo-link.com", // replace with your actual demo link
-        code: "https://github.com/yourusername/face-recognition-system" // replace with your actual code link
+        code: "https://github.com/yourusername/face-recognition-system"
       }
     };
 
@@ -440,13 +427,6 @@
       document.getElementById("projectModal").style.display = "flex";
       document.getElementById("modalTitle").textContent = projectData[key].title;
 
-      // Demo button
-      if(projectData[key].demo && projectData[key].demo !== "#") {
-        document.getElementById("demoLink").style.display = "";
-        document.getElementById("demoLink").href = projectData[key].demo;
-      } else {
-        document.getElementById("demoLink").style.display = "none";
-      }
       // Code button
       if(projectData[key].code && projectData[key].code !== "#") {
         document.getElementById("codeLink").style.display = "";
